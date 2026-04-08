@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 96%;
+    --foreground: 220 15% 20%;
+
+    --card: 40 25% 97%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    --primary: 210 65% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 15% 92%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 40 10% 90%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 210 65% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 210 65% 45%;
+
+    --radius: 0.5rem;
+
+    /* Calendar-specific tokens */
+    --calendar-paper: 40 30% 98%;
+    --calendar-shadow: 220 15% 70%;
+    --calendar-spiral: 220 10% 40%;
+    --calendar-range-bg: 210 70% 92%;
+    --calendar-range-end: 210 65% 45%;
+    --calendar-today: 25 90% 55%;
+    --calendar-weekend: 0 60% 55%;
+    --calendar-hover: 210 40% 96%;
+    --calendar-note-bg: 45 60% 95%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .calendar-paper {
+    background-color: hsl(var(--calendar-paper));
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  .spiral-hole {
+    @apply w-5 h-5 rounded-full border-2;
+    border-color: hsl(var(--calendar-spiral));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--calendar-spiral) / 0.1) 0%,
+      hsl(var(--calendar-spiral) / 0.3) 100%
+    );
+    box-shadow: inset 0 1px 3px hsl(var(--calendar-spiral) / 0.4);
+  }
+
+  .calendar-shadow {
+    box-shadow:
+      0 4px 6px -1px hsl(var(--calendar-shadow) / 0.15),
+      0 10px 25px -5px hsl(var(--calendar-shadow) / 0.2),
+      0 20px 50px -12px hsl(var(--calendar-shadow) / 0.25);
+  }
+
+  .date-cell-hover {
+    @apply transition-all duration-150;
+  }
+  .date-cell-hover:hover {
+    background-color: hsl(var(--calendar-hover));
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px hsl(var(--calendar-shadow) / 0.15);
+  }
+}
